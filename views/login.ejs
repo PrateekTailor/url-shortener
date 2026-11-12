@@ -1,0 +1,445 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Shortly</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f4f6fb;
+            padding: 25px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1050px;
+            min-height: 620px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+        }
+
+        /* LEFT SECTION */
+
+        .left-section {
+            background: linear-gradient(145deg, #111827, #263b63);
+            padding: 55px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #818cf8;
+        }
+
+        .left-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .left-content h1 {
+            font-size: 40px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .left-content p {
+            color: #cbd5e1;
+            font-size: 15px;
+            line-height: 1.8;
+            max-width: 350px;
+        }
+
+        .features {
+            margin-top: 35px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            font-size: 14px;
+            color: #e2e8f0;
+        }
+
+        .check {
+            width: 24px;
+            height: 24px;
+            background: rgba(129,140,248,0.2);
+            color: #a5b4fc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .left-footer {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+            right: -120px;
+            bottom: -100px;
+        }
+
+        .circle::before {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            top: 50px;
+            left: 50px;
+        }
+
+        /* RIGHT SECTION */
+
+        .right-section {
+            padding: 55px 65px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-heading {
+            margin-bottom: 35px;
+        }
+
+        .form-heading h2 {
+            font-size: 30px;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+
+        .form-heading p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .form-group {
+            margin-bottom: 23px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 9px;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 49px;
+            border: 1px solid #dbe1ea;
+            border-radius: 8px;
+            padding: 0 14px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+        }
+
+        .password-box {
+            position: relative;
+        }
+
+        .password-box input {
+            padding-right: 65px;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: #6366f1;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .forgot-password {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: -10px;
+            margin-bottom: 25px;
+        }
+
+        .forgot-password a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            height: 49px;
+            border: none;
+            border-radius: 8px;
+            background: #4f46e5;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(79,70,229,0.2);
+        }
+
+        .signup-text {
+            text-align: center;
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 30px;
+        }
+
+        .signup-text a {
+            color: #4f46e5;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 768px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+            }
+
+            .left-section {
+                display: none;
+            }
+
+            .right-section {
+                padding: 45px 25px;
+            }
+
+            .form-heading h2 {
+                font-size: 26px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- LEFT SECTION -->
+
+        <div class="left-section">
+
+            <div class="logo">
+                shortly<span>.</span>
+            </div>
+
+            <div class="left-content">
+
+                <h1>Welcome<br>back!</h1>
+
+                <p>
+                    Your links, your insights, all in one place.
+                    Log in and continue managing your shortened URLs.
+                </p>
+
+                <div class="features">
+
+                    <div class="feature">
+                        <span class="check">✓</span>
+                        Access all your shortened links
+                    </div>
+
+                    <div class="feature">
+                        <span class="check">✓</span>
+                        Monitor your link performance
+                    </div>
+
+                    <div class="feature">
+                        <span class="check">✓</span>
+                        Manage your URLs effortlessly
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="left-footer">
+                © 2026 Shortly. All rights reserved.
+            </div>
+
+            <div class="circle"></div>
+
+        </div>
+
+
+        <!-- RIGHT SECTION -->
+
+        <div class="right-section">
+
+            <div class="form-heading">
+
+                <h2>Welcome back</h2>
+
+                <p>
+                    Enter your credentials to access your account.
+                </p>
+
+            </div>
+
+
+            <form action="/user/login" method="POST">
+
+                <div class="form-group">
+
+                    <label>Email Address</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            onclick="togglePassword()"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+
+
+                <button type="submit" class="login-btn">
+                    Login →
+                </button>
+
+            </form>
+
+
+            <div class="signup-text">
+
+                Don't have an account?
+
+                <a href="/signup">Create account</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function togglePassword() {
+
+            const password = document.getElementById("password");
+
+            const button = document.querySelector(".show-password");
+
+            if (password.type === "password") {
+
+                password.type = "text";
+                button.innerText = "Hide";
+
+            } else {
+
+                password.type = "password";
+                button.innerText = "Show";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
